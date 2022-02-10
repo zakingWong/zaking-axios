@@ -1,0 +1,27 @@
+{
+  "name": "zaking-axios",
+  "version": "1.0.0",
+  "description": "High simulation restore axios",
+  "main": "dist/axios.umd.js",
+  "module": "dist/axios.es5.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakingWong/zaking-axios.git"
+  },
+  "author": "zaking",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zakingWong/zaking-axios/issues"
+  },
+  "devDependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2"
+  },
+  "homepage": "https://github.com/zakingWong/zaking-axios#readme"
+}

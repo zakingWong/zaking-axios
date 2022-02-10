@@ -1,0 +1,1 @@
+{"version":3,"file":"axios.umd.js","sources":["../lib/axios.js"],"sourcesContent":["function axios() {\n  console.log(\"axios\");\n}\nexport default axios;\n"],"names":[],"mappings":";;;;;;EAAA,SAAS,KAAK,GAAG;EACjB,EAAE,OAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;EACvB;;;;;;;;"}

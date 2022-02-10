@@ -1,0 +1,1 @@
+{"version":3,"file":"axios.es5.js","sources":["../lib/axios.js"],"sourcesContent":["function axios() {\n  console.log(\"axios\");\n}\nexport default axios;\n"],"names":[],"mappings":"AAAA,SAAS,KAAK,GAAG;AACjB,EAAE,OAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC;AACvB;;;;"}
