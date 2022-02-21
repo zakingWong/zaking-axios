@@ -3,6 +3,8 @@ const express = require("express"); // express
 const webpack = require("webpack"); // webpack
 const webpackDevMiddleware = require("webpack-dev-middleware"); // express的webpack的开发环境的中间件，可以通过express来使用webpack构建
 const webpackHotMiddleware = require("webpack-hot-middleware"); // 同上，热更新中间件
+const bodyParser = require("body-parser");
+
 const WebpackConfig = require("./webpack.config");
 
 const app = express();
@@ -19,13 +21,16 @@ app.use(
 
 app.use(webpackHotMiddleware(compiler));
 app.use(express.static(__dirname));
+app.use(bodyParser.json());
+// app.use(bodyParser.text())
+app.use(bodyParser.urlencoded({ extended: true }));
 const router = express.Router();
 
 registerC1Router();
-
+registerC2Router();
 app.use(router);
 
-const port = process.env.PORT || 9090;
+const port = process.env.PORT || 9091;
 module.exports = app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`);
 });
@@ -34,6 +39,25 @@ function registerC1Router() {
   router.get("/c1/get", function (req, res) {
     res.json({
       msg: `hello world`,
+    });
+  });
+}
+
+function registerC2Router() {
+  router.post("/c2/post", function (req, res) {
+    res.json(req.body);
+  });
+
+  router.post("/c2/buffer", function (req, res) {
+    let msg = [];
+    req.on("data", (chunk) => {
+      if (chunk) {
+        msg.push(chunk);
+      }
+    });
+    req.on("end", () => {
+      let buf = Buffer.concat(msg);
+      res.json(buf.toJSON());
     });
   });
 }
