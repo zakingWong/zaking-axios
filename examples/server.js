@@ -37,9 +37,7 @@ module.exports = app.listen(port, () => {
 
 function registerC1Router() {
   router.get("/c1/get", function (req, res) {
-    res.json({
-      msg: `hello world`,
-    });
+    res.json(req.query);
   });
 }
 
