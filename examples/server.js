@@ -28,6 +28,7 @@ const router = express.Router();
 
 registerC1Router();
 registerC2Router();
+registerC3Router();
 app.use(router);
 
 const port = process.env.PORT || 9091;
@@ -57,5 +58,26 @@ function registerC2Router() {
       let buf = Buffer.concat(msg);
       res.json(buf.toJSON());
     });
+  });
+}
+
+function registerC3Router() {
+  router.get("/c3/get", function (req, res) {
+    if (Math.random() > 0.5) {
+      res.json({
+        msg: `hello world`,
+      });
+    } else {
+      res.status(500);
+      res.end();
+    }
+  });
+
+  router.get("/c3/timeout", function (req, res) {
+    setTimeout(() => {
+      res.json({
+        msg: `hello world`,
+      });
+    }, 3000);
   });
 }
