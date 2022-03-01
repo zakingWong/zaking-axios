@@ -23,12 +23,13 @@ app.use(webpackHotMiddleware(compiler));
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 // app.use(bodyParser.text())
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ c4ed: true }));
 const router = express.Router();
 
 registerC1Router();
 registerC2Router();
 registerC3Router();
+registerC4Router();
 app.use(router);
 
 const port = process.env.PORT || 9091;
@@ -79,5 +80,48 @@ function registerC3Router() {
         msg: `hello world`,
       });
     }, 3000);
+  });
+}
+
+function registerC4Router() {
+  router.get("/c4/get", function (req, res) {
+    res.json({
+      msg: "hello world",
+    });
+  });
+
+  router.options("/c4/options", function (req, res) {
+    res.end();
+  });
+
+  router.delete("/c4/delete", function (req, res) {
+    res.end();
+  });
+
+  router.head("/c4/head", function (req, res) {
+    res.end();
+  });
+
+  router.post("/c4/post", function (req, res) {
+    res.json(req.body);
+  });
+
+  router.put("/c4/put", function (req, res) {
+    res.json(req.body);
+  });
+
+  router.patch("/c4/patch", function (req, res) {
+    res.json(req.body);
+  });
+
+  router.get("/c4/user", function (req, res) {
+    res.json({
+      code: 0,
+      message: "ok",
+      result: {
+        name: "jack",
+        age: 18,
+      },
+    });
   });
 }
