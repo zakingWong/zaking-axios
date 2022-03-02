@@ -30,6 +30,7 @@ registerC1Router();
 registerC2Router();
 registerC3Router();
 registerC4Router();
+registerC5Router();
 app.use(router);
 
 const port = process.env.PORT || 9091;
@@ -123,5 +124,10 @@ function registerC4Router() {
         age: 18,
       },
     });
+  });
+}
+function registerC5Router() {
+  router.get("/c5/get", function (req, res) {
+    res.end("hello");
   });
 }
