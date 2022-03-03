@@ -1,10 +1,11 @@
+import qs from "qs";
 import axios from "../../lib/axios";
 axios.defaults.headers.common["test2"] = 123;
 
 axios({
   url: "/c6/post",
   method: "post",
-  data: JSON.stringify({
+  data: qs.stringify({
     a: 1,
   }),
   headers: {
@@ -17,7 +18,7 @@ axios({
 axios({
   transformRequest: [
     function (data) {
-      return JSON.stringify(data);
+      return qs.stringify(data);
     },
     ...axios.defaults.transformRequest,
   ],
@@ -42,7 +43,7 @@ axios({
 const instance = axios.create({
   transformRequest: [
     function (data) {
-      return JSON.stringify(data);
+      return qs.stringify(data);
     },
     ...axios.defaults.transformRequest,
   ],
