@@ -32,6 +32,7 @@ registerC3Router();
 registerC4Router();
 registerC5Router();
 registerC6Router();
+registerC7Router();
 app.use(router);
 
 const port = process.env.PORT || 9091;
@@ -136,5 +137,19 @@ function registerC5Router() {
 function registerC6Router() {
   router.post("/c6/post", function (req, res) {
     res.json(req.body);
+  });
+}
+
+function registerC7Router() {
+  router.get("/c7/get", function (req, res) {
+    setTimeout(() => {
+      res.json("hello");
+    }, 1000);
+  });
+
+  router.post("/c7/post", function (req, res) {
+    setTimeout(() => {
+      res.json(req.body);
+    }, 1000);
   });
 }
