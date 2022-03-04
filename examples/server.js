@@ -166,4 +166,8 @@ function registerC8Router() {
   router.get("/c8/get", function (req, res) {
     res.json(req.cookies);
   });
+  router.post("/c8/upload", function (req, res) {
+    console.log(req.body, req.files);
+    res.end("upload success!");
+  });
 }

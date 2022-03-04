@@ -17,7 +17,14 @@ module.exports = {
     filename: "[name].js",
     publicPath: "/__build__/",
   },
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
   resolve: {
     extensions: [".js"],
   },
