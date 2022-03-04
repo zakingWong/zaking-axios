@@ -4,8 +4,8 @@ const webpack = require("webpack"); // webpack
 const webpackDevMiddleware = require("webpack-dev-middleware"); // express的webpack的开发环境的中间件，可以通过express来使用webpack构建
 const webpackHotMiddleware = require("webpack-hot-middleware"); // 同上，热更新中间件
 const bodyParser = require("body-parser");
-
 const WebpackConfig = require("./webpack.config");
+require("./server2");
 
 const app = express();
 const compiler = webpack(WebpackConfig);
@@ -33,6 +33,7 @@ registerC4Router();
 registerC5Router();
 registerC6Router();
 registerC7Router();
+registerC8Router();
 app.use(router);
 
 const port = process.env.PORT || 9091;
@@ -151,5 +152,11 @@ function registerC7Router() {
     setTimeout(() => {
       res.json(req.body);
     }, 3000);
+  });
+}
+
+function registerC8Router() {
+  router.get("/c8/get", function (req, res) {
+    res.json(req.cookies);
   });
 }
