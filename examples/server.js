@@ -144,12 +144,12 @@ function registerC7Router() {
   router.get("/c7/get", function (req, res) {
     setTimeout(() => {
       res.json("hello");
-    }, 1000);
+    }, 3000);
   });
 
   router.post("/c7/post", function (req, res) {
     setTimeout(() => {
       res.json(req.body);
-    }, 1000);
+    }, 3000);
   });
 }

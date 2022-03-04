@@ -56,4 +56,4 @@ axios
 
 setTimeout(() => {
   controller.abort();
-}, 200);
+}, 1000);
