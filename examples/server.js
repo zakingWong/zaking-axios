@@ -188,4 +188,12 @@ function registerC8Router() {
     res.status(304);
     res.end();
   });
+
+  router.get("/c8/A", function (req, res) {
+    res.end("A");
+  });
+
+  router.get("/c8/B", function (req, res) {
+    res.end("B");
+  });
 }
