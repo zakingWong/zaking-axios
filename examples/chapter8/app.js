@@ -1,7 +1,7 @@
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import qs from "qs";
 import axios from "../../lib/axios";
-
 // withCredentials
 document.cookie = "a=b";
 
@@ -133,4 +133,43 @@ axios
   })
   .catch((e) => {
     console.log(e.message);
+  });
+
+// paramsSerializer
+axios
+  .get("/c8/get", {
+    params: new URLSearchParams("a=b&c=d"),
+  })
+  .then((res) => {
+    console.log(res);
+  });
+
+axios
+  .get("/c8/get", {
+    params: {
+      a: 1,
+      b: 2,
+      c: ["a", "b", "c"],
+    },
+  })
+  .then((res) => {
+    console.log(res);
+  });
+
+const instanceX = axios.create({
+  paramsSerializer(params) {
+    return qs.stringify(params, { arrayFormat: "brackets" });
+  },
+});
+
+instanceX
+  .get("/c8/get", {
+    params: {
+      a: 1,
+      b: 2,
+      c: ["a", "b", "c"],
+    },
+  })
+  .then((res) => {
+    console.log(res);
   });
