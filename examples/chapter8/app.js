@@ -173,3 +173,10 @@ instanceX
   .then((res) => {
     console.log(res);
   });
+
+// baseURL
+const instanceB = axios.create({
+  baseURL: "https://httpbin.org/",
+});
+
+instanceB.get("image/jpeg");
