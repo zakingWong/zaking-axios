@@ -183,4 +183,9 @@ function registerC8Router() {
       res.end("UnAuthorization");
     }
   });
+
+  router.get("/c8/304", function (req, res) {
+    res.status(304);
+    res.end();
+  });
 }

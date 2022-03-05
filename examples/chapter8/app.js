@@ -111,3 +111,26 @@ authInstance
   .then((res) => {
     console.log(res);
   });
+
+// validateStatus
+axios
+  .get("/c8/304")
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((e) => {
+    console.log(e.message);
+  });
+
+axios
+  .get("/c8/304", {
+    validateStatus(status) {
+      return status >= 200 && status < 400;
+    },
+  })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((e) => {
+    console.log(e.message);
+  });
