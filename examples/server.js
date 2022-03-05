@@ -5,6 +5,7 @@ const webpackDevMiddleware = require("webpack-dev-middleware"); // express的web
 const webpackHotMiddleware = require("webpack-hot-middleware"); // 同上，热更新中间件
 const bodyParser = require("body-parser");
 const WebpackConfig = require("./webpack.config");
+const atob = require("atob");
 require("./server2");
 
 const app = express();
@@ -169,5 +170,17 @@ function registerC8Router() {
   router.post("/c8/upload", function (req, res) {
     console.log(req.body, req.files);
     res.end("upload success!");
+  });
+  router.post("/c8/post", function (req, res) {
+    const auth = req.headers.authorization;
+    const [type, credentials] = auth.split(" ");
+    console.log(atob(credentials));
+    const [username, password] = atob(credentials).split(":");
+    if (type === "Basic" && username === "Yee" && password === "123456") {
+      res.json(req.body);
+    } else {
+      res.status(401);
+      res.end("UnAuthorization");
+    }
   });
 }

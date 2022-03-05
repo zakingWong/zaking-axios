@@ -92,3 +92,22 @@ uploadEl.addEventListener("click", (e) => {
     instanceProgress.post("/c8/upload", data);
   }
 });
+
+// Authorization
+const authInstance = axios.create();
+authInstance
+  .post(
+    "/c8/post",
+    {
+      a: 1,
+    },
+    {
+      auth: {
+        username: "Yee",
+        password: "123456",
+      },
+    }
+  )
+  .then((res) => {
+    console.log(res);
+  });
