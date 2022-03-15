@@ -15,8 +15,8 @@ axios({
     "content-type": "application/json;charset=utf-8",
   },
   data: {
-    a: 1,
-    b: 2,
+    a: 3,
+    b: 4,
   },
 });
 
@@ -41,8 +41,8 @@ axios({
   method: "post",
   url: "/c2/post",
   data: {
-    a: 1,
-    b: 2,
+    a: 5,
+    b: 6,
   },
 }).then((res) => {
   console.log(res);
@@ -53,8 +53,8 @@ axios({
   url: "/c2/post",
   responseType: "json",
   data: {
-    a: 3,
-    b: 4,
+    a: 7,
+    b: 8,
   },
 }).then((res) => {
   console.log(res);
