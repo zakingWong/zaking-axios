@@ -9,6 +9,7 @@ const WebpackConfig = require("./webpack.config");
 
 const app = express();
 const compiler = webpack(WebpackConfig);
+// 使用node的中间件来读取webpack配置进行server的打包
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: "/__build__/",
@@ -26,15 +27,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const router = express.Router();
 
+// 注册路由
 registerC1Router();
 registerC2Router();
 app.use(router);
 
-const port = process.env.PORT || 9091;
+const port = process.env.PORT || 9090;
 module.exports = app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`);
 });
 
+// 注册get方法的接口
 function registerC1Router() {
   router.get("/c1/get", function (req, res) {
     res.json(req.query);
