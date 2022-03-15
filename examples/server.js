@@ -34,7 +34,7 @@ module.exports = app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`);
 });
 
-// 注册get方法的路由
+// 注册get方法的接口
 function registerC1Router() {
   router.get("/c1/get", function (req, res) {
     res.json({
